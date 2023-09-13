@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stakan <stakan@student.42.fr>              +#+  +:+       +#+         #
+#    By: stakan <stakan@student.42.tr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 10:51:52 by stakan            #+#    #+#              #
-#    Updated: 2023/09/13 10:53:48 by stakan           ###   ########.fr        #
+#    Updated: 2023/09/13 14:17:01 by stakan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= minishell
 
-#	Flags for compile
+#	Derleme icin kullanilan komutlar.
 CC			= gcc
 FLAGS		= -Wall -Werror -Wextra
 
-#	All process use for compiling.
+#	Genel degiskenler.
 UNAME		:= $(shell uname -s)
 NUMPROC		:= 8
 USER 		:= $(shell whoami)
@@ -28,23 +28,17 @@ RL_LIB_OS	:= /goinfre/$(USER)/brew/Cellar/readline/8.2.1/lib
 
 #	Libft Part --> OK
 LIBFTDIR		= ./libraries/libft
-# LIBFT		= $(LIBFTDIR)/libft.a
 
 #	Locations Part --> OK
 LIBRARIES	= \
 	-L$(LIBFTDIR)/ -lft \
 	-L$(RL_LIB_OS) -lreadline
-#	-L/opt/homebrew/Cellar/readline/8.1.2/lib -lreadline
-#	-L/goinfre/homebrew/opt/readline/lib -lreadline -fcommon
 
 # -L.brew/opt/readline/lib -lreadline
 INCLUDES	= \
 	-I$(HEADERS_DIRECTORY) \
 	-I$(LIBFTDIR)/includes \
 	-I$(RL_INC_OS)
-#	-I/opt/homebrew/Cellar/readline/8.1.2/include/
-#	-I/goinfre/homebrew/opt/readline/include -fcommon
-#	-I$(READLINE_DIR)/include
 
 #	HEADERS Parts --> Kutuphane --> OK
 HEADERS_DIRECTORY = ./includes/
@@ -94,11 +88,9 @@ else ifeq ($(UNAME), Darwin)
 	NUMPROC	:= $(shell sysctl -n hw.ncpu)
 	OS = "You are connected from $(PCNAME) iMac 🖥 ! Welcome $(CYAN)$(USER)$(X)"
 endif
-# You can use --> man sysctl -> shell: sysctl -a | grep "hw.ncpu"
 
 all:
 	@$(MAKE) $(NAME) -j $(NUMPROC) --no-print-directory
-#	@$(MAKE) -s $(NAME) -j $(NUMPROC)
 
 #	Compiling
 $(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c
@@ -136,7 +128,7 @@ re:
 	@$(MAKE) fclean --no-print-directory
 	@$(MAKE) all --no-print-directory
 
-# Use this command inside Ecole 42 schools iMac.
+# 	Bu komutlar HomeBrew kullanarak readline kütüphanesini indiriyoruz.
 down_brew:
 	git clone "https://github.com/Homebrew/brew" /goinfre/$(USER)/brew
 	eval "$$(/goinfre/$(USER)/brew/bin/brew shellenv)"
@@ -144,8 +136,9 @@ down_brew:
 	chmod -R go-w "$$(/goinfre/$(USER)/brew/bin/brew --prefix)/share/zsh"
 	@echo "Brew installed inside /goinfre/$(USER)/brew"
 	/goinfre/$(USER)/brew/bin/brew install readline
-	@echo "Brew readline installed."
+	@echo "Brew installed inside /goinfre/$(USER)/brew"
 
+# 	Bu komutlar tüm projenin norminette testini yürütüyor.
 norm:
 	@echo "$(GREEN)Norminette Testi Yürütülüyor$(X)"
 	@echo "Includes Norm Hata Sayısı: $(RED)$(shell norminette includes | grep "Error" | wc -l)$(X)"
@@ -155,10 +148,12 @@ norm:
 	@echo "Sources Norm Hata Sayısı: $(RED)$(shell norminette sources | grep "Error" | wc -l)$(X)"
 	@echo "$(RED)$(shell norminette sources | grep "Error")$(X)"
 
+# 	Bu komut minishell.h dosyasındaki T_NAME define'ını hangi kullanıcı ve hangi bilgisayarda çalıştığınızı gösteriyor.
 uname:
 	@sed -i '' 's/^# define T_NAME.*/# define T_NAME 			"\\033[0;31m$(USER)\\033[0;32m@\\033[0;36m$(PCNAME) \\033[m"/' includes/minishell.h
 
+# 	Bu komut minishell.h dosyasındaki T_NAME define'ını default olarak "user" olarak ayarlıyor.
 unamecls:
-	@sed -i '' 's/^# define T_NAME.*/# define T_NAME 			"user"/' includes/minishell.h
+	@sed -i '' 's/^# define T_NAME.*/# define T_NAME 			"user@pc"/' includes/minishell.h
 
 .PHONY: all clean fclean re libft down_brew uname
