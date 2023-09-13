@@ -224,7 +224,7 @@ https://www.ibm.com/docs/en/i/7.5?topic=functions-fputs-write-string#fputs
 /*
 terminal isminin basina/sonuna renk kodlarini eklersek yazilar ust uste biniyor
 */
-# define T_NAME 			"user"
+# define T_NAME 			"user@pc"
 # define CNAME				"stakan"
 # define SHELLNAME			"minishell"
 
