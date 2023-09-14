@@ -158,7 +158,7 @@ set-attributes-terminal
 	tcgetattr()	-> Get the parameters associated with the terminal.
 		int tcsetattr(int fd, int when, const struct termios *termptr);
 https://www.ibm.com/docs/en/zos/2.5.0?topic=functions-tcgetattr-\
-get-attributes-terminal#rttcga
+get-attributes-terminal#rttcgax
 */
 # include <curses.h> /* -Definitions for screen handling
  and optimization functions-
