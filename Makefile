@@ -6,7 +6,7 @@
 #    By: stakan <stakan@student.42.tr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 10:51:52 by stakan            #+#    #+#              #
-#    Updated: 2023/09/13 14:17:01 by stakan           ###   ########.fr        #
+#    Updated: 2023/09/21 10:53:35 by stakan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= minishell
 
 #	Derleme icin kullanilan komutlar.
 CC			= gcc
-FLAGS		= -Wall -Werror -Wextra
+FLAGS		= -Wall -Werror -Wextra #-g -ggdb
 
 #	Genel degiskenler.
 UNAME		:= $(shell uname -s)
