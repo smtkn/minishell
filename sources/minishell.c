@@ -53,5 +53,6 @@ void	minishell(t_base *base)
 			add_history(base->input_line);
 		minishell_part_2(base);
 	}
+	free(title);
 	free_all(base);
 }
