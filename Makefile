@@ -50,7 +50,7 @@ SOURCES_DIRECTORY = ./sources/
 SOURCES_LIST = $(subst $(SOURCES_DIRECTORY),,$(wildcard $(SOURCES_DIRECTORY)*.c))
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-#	Object Files --> (Compiled files directory) -> OK
+#	Obje Dosyaları --> (Compiled files directory) -> OK
 OBJECTS_DIRECTORY = objects/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
 OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
