@@ -24,8 +24,8 @@
 # define PURPLE		"\033[0;35m"
 # define CYAN		"\033[0;36m"
 # define WHITE		"\033[0;37m"
-# define END		"\033[m"
 # define RESET		"\033[0m"
+# define END		"\033[m"
 
 //	COLORS BOLD--> B🟥 B🟩 B🟦
 # define B_CYAN		"\033[1;36m"
