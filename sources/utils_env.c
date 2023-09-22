@@ -43,7 +43,7 @@ char	*find_chr_ret_str(char *str, char c, bool status)
 	return (ft_substr(str, 0, i));
 }
 
-int	env_size(char *src)
+int	env_size(char *src)//kullanılmayan fonksiyon
 {
 	char	*data_1;
 	char	*data_2;
