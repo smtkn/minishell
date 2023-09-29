@@ -100,69 +100,31 @@ int main(int argc, char *argv[], char *envp[])
 }
 
 
--------
+----------------------------------------------------------------------------------------------------------------------------
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 
-// Komut geçmişini temizleyen bir işlev
-void clearCommandHistory() 
-{
-    clear_history();
-    printf("Komut geçmişi temizlendi.\n");
-}
-
-// Kullanıcının girdisini işleyen bir işlev
-void processInput(char *input) 
-{ 
-    if (strcmp(input, "clear") == 0) 
-    {
-        clearCommandHistory();
-    } 
-    else if (strcmp(input, "clearall") == 0) 
-    {
-        clearCommandHistory();
-    } 
-    else if (strcmp(input, "history") == 0) 
-    {
-        HIST_ENTRY **historyList = history_list();
-        if (historyList != NULL) 
-        {
-            for (int i = 0; historyList[i] != NULL; i++) 
-            {
-                printf("%d: %s\n", i + 1, historyList[i]->line);
-            }
-        }
-    } 
-    else 
-    {
-        // Kullanıcının girdisini ekrana yazdırın
-        printf("Girdiğiniz komut: %s\n", input);
-    }
-}
-
 int main() 
 {
-    while (1) 
-    {
-        char *input = readline("Komut girin (çıkmak için 'exit', 'clear', 'clearall' veya 'history' yazın): ");
+    char *prompt = "Komutu girin: ";
+    char *input;
+
+    while (1) {
+        input = readline(prompt);
 
         // Kullanıcının girdisini komut geçmişine ekleyin
         add_history(input);
 
-        // Kullanıcının girdisini işleyin
-        processInput(input);
+        // Kullanıcının girdisini ekrana yazdırın
+        printf("Girdiğiniz komut: %s\n", input);
 
-        // Kullanıcının "exit" komutunu kullanarak çıkmasını kontrol edin
-        if (strcmp(input, "exit") == 0) 
-        {
-						printf("Çıkılıyor...\n");
-            free(input); // Belleği serbest bırakın ve döngüyü sonlandırın
-            break;
-        }
+        // Yeni bir komut satırı oluşturmak için mevcut satırı temizleyin ve başka bir metinle değiştirin
+        rl_replace_line("Yeni bir komut", 0);
+
+        // Yenilenmiş komut satırını ekrana yazdırın
+        rl_redisplay();
 
         // readline tarafından tahsis edilen belleği serbest bırakın
         free(input);
