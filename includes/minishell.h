@@ -6,7 +6,7 @@
 /*   By: stakan <stakan@student.42.tr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 13:59:36 by stakan            #+#    #+#             */
-/*   Updated: 2023/09/13 13:59:37 by stakan           ###   ########.fr       */
+/*   Updated: 2023/09/29 10:19:16 by stakan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -500,7 +500,7 @@ t_cmd	*cmd_lstlast(t_cmd *cmd);
 
 // utils_cmd.c
 void	cmd_set_me_fd_last_out(t_cmd *cmd, int *last_out);
-void	close_cmd_fd(t_cmd *cmd);
+void	close_cmd_fd(t_cmd *cmd); 
 int		cmd_count(t_cmd *cmd);
 char	*str_add(char *tmp, char *str);
 void	cmd_lstadd_back(t_cmd **lst, t_cmd *new);
