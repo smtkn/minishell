@@ -53,7 +53,7 @@ $(NAME): uname $(OBJDIR) $(OBJ)
 $(OBJDIR)/%.o: src/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
+clean: unamecls
 	@$(RM) -rf $(OBJDIR)
 	@echo "$(RED)-- Cleaning Objects...$(RESET)"
 	@make -C $(LIBFT) clean
