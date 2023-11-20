@@ -73,6 +73,7 @@ uname:
 # 	Bu komut minishell.h dosyasındaki T_NAME define'ını default olarak "user" olarak ayarlıyor.
 unamecls:
 	@sed -i '' 's/^# define T_NAME.*/# define T_NAME "user@pc"/' src/minishell.h
+	@sed -i '' 's/^# define C_NAME.*/# define C_NAME "user"/' src/minishell.h
 
 norm:
 	@echo "$(GREEN)Checking Norminette..."
