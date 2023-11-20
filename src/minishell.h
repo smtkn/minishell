@@ -24,8 +24,8 @@
 # define STDINN 0
 # define STDOUT 1
 # define STDERR 2
-# define T_NAME "\033[0;31mstakan\033[0;32m@\033[0;36mk2m06s01 \033[m"
-# define C_NAME "stakan"
+# define T_NAME "user@pc"
+# define C_NAME "user"
 
 typedef struct s_env
 {
